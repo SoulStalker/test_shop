@@ -26,5 +26,17 @@ def cart_remove(request, product_id):
 def cart_detail(request):
     cart = Cart(request)
     for item in cart:
-        item["update_quantity_form"] = CartAddProductForm(initial={"quantity": item["quantity"], "override": True})
+        item["update_quantity_form"] = CartAddProductForm(
+            initial={"quantity": item["quantity"], "override": True}
+        )
     return render(request, "cart/detail.html", {"cart": cart})
+
+
+def product_detail(request, id, slug):
+    product = get_object_or_404(Product, id=id, slug=slug, available=True)
+    cart_product_form = CartAddProductForm()
+    return render(
+        request,
+        "shop/product/detail.html",
+        {"product": product, "cart_product_form": cart_product_form},
+    )
