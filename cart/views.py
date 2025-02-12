@@ -15,12 +15,16 @@ def cart_add(request, product_id):
         cart.add(
             product=product, quantity=cd["quantity"], override_quantity=cd["override"]
         )
+    print(form.errors)
     return redirect("cart:cart_detail")
 
 
 @require_POST
 def cart_remove(request, product_id):
     cart = Cart(request)
+    product = get_object_or_404(Product, id=product_id)
+    cart.remove(product)
+    return redirect("cart:cart_detail")
 
 
 def cart_detail(request):
