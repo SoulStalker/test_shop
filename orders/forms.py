@@ -13,4 +13,3 @@ class OrderCreateForm(forms.ModelForm):
             "postal_code",
             "city",
         ]
-
