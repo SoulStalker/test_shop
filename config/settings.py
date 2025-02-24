@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "shop.apps.ShopConfig",
     "cart.apps.CartConfig",
     "orders.apps.OrdersConfig",
+    "payment.apps.PaymentConfig",
 ]
 
 MIDDLEWARE = [
@@ -108,9 +109,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
+STATIC_ROOT = BASE_DIR / "static"
+# STATICFILES_DIRS = [
+#     BASE_DIR / "static",
+# ]
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
@@ -130,3 +132,12 @@ CELERY_BROKER_URL = "amqp://192.168.10.50:5672"
 CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
+
+
+# Stripe settings
+STRIPE_PUBLISHABLE_KEY = "pk_test_51QuC844EqzC12t9TOJcYFxl9HSGxaOUNt6Mi4TqkdohWb1Y933XGMC6cJ9mysU00dSOi2Y9dLp0eAlJ8fC3sSUpT00Hf512RDI"
+STRIPE_SECRET_KEY = "sk_test_51QuC844EqzC12t9TslSnmtLezQ4oBfeQhC2b1Ktg705WztfiZbBAu5imo3NkOv16n9uHTUZK8u7F2QaQCpFzlbry00fMTiBaUj"
+STRIPE_API_VERSION = "2022-08-01"
+STIPE_WEBHOOK_SECRET = (
+    "seti_1NG8Du2eZvKYlo2C9XMqbR0x_secret_O2CdhLwGFh2Aej7bCY7qp8jlIuyR8DJ"
+)
